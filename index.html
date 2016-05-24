@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Wii U gamepad to PC</title>
+  </head>
+  <body>
+    Connected.
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+      window.location.hash = "disable-back-button";
+      window.location.hash = "no-back-button";
+      window.onhashchange = function() {
+        window.location.hash = "disable-back-button";
+      }
+			var socket = io();
+      var inter = setInterval(function() {
+        socket.emit('gamepad', window.wiiu.gamepad.update());
+      }, 1);
+		</script>
+  </body>
+</html>
